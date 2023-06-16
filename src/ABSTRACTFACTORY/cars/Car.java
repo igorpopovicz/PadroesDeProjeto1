@@ -18,11 +18,11 @@ public abstract class Car {
     }
 
     public String getHorsePower() {
-        return "" + this.horsePower;
+        return this.horsePower + "HP";
     }
 
     public String getFuelCapacity() {
-        return "" + this.fuelCapacity;
+        return this.fuelCapacity + "L";
     }
 
     public String getColor() {

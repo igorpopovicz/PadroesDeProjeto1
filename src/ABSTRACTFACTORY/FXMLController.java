@@ -85,9 +85,9 @@ public class FXMLController implements Initializable {
        clnHorsePower.setCellValueFactory(new PropertyValueFactory<Alugado, String>("HP"));
        
        clnNome.setPrefWidth(50);
-       clnHorsePower.setPrefWidth(108);
-       clnFuelC.setPrefWidth(110);
-       clnCor.setPrefWidth(50);
+       clnHorsePower.setPrefWidth(105);
+       clnFuelC.setPrefWidth(105);
+       clnCor.setPrefWidth(60);
        
        
        tblTabela.getColumns().add(clnNome);
