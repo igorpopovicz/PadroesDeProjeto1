@@ -8,12 +8,17 @@
 <br>
 <p>Feito com JavaFX e ScneBuider no Vscode</p>
 <br>
+
 ## Para executar
+
 Para executar o .jar direto no terminal->
+
 ```
 java -jar --module-path lib --add-modules javafx.controls,javafx.fxml PadroesDeProjeto1.jar
 ```
+
 Para executar em uma ide adicione esse comando no debugger->
+
 ```
 "--module-path lib/ --add-modules javafx.controls,javafx.fxml"
 ```
