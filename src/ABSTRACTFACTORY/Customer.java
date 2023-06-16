@@ -1,19 +1,17 @@
 package ABSTRACTFACTORY;
 public class Customer {
-    public static final int RENAULT = 1;
-    public static final int VOLKSWAGEN = 2;
 
     private String nome;
     
     private String gradeRequest;
-    private int company;
+    private String company;
 
-    public Customer(String gradeRequest, int company) {
+    public Customer(String gradeRequest, String company) {
         this.gradeRequest = gradeRequest;
         this.company = company;
     }
 
-    public int getCompany() {
+    public String getCompany() {
         return this.company;
     }
 

@@ -13,13 +13,20 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import ABSTRACTFACTORY.factorys.*;
+import ABSTRACTFACTORY.cars.Car;
+
 /**
  * FXML Controller class
  *
  * @author guirgo
  */
-public class FXMLController implements Initializable {
-    
+public class FXMLController implements Initializable {    
+
+    private String cbMarcaData;
+    private String cbModeloData;
+    private String cbCorData;
+
     @FXML
     private ComboBox<String> cbMarca;
     @FXML
@@ -30,20 +37,16 @@ public class FXMLController implements Initializable {
     private ComboBox<String> cbCor;
     @FXML
     private TableView<Alugado> tblTabela;
-    
+
+        private TableColumn<Alugado, String> clnNome = new TableColumn<Alugado, String>("Nome");
     
     private TableColumn<Alugado, String> clnCor = new TableColumn<Alugado, String>("Cor");
-
-    @FXML
-    private TableColumn<Alugado, String> clnMarca = new TableColumn<Alugado, String>("Marca");;
-
     
-    private TableColumn<Alugado, String> clnModelo = new TableColumn<Alugado, String>("Modelo");;
+    private TableColumn<Alugado, String> clnFuelC = new TableColumn<Alugado, String>("Fuel Capacity");
+
+    private TableColumn<Alugado, String> clnHorsePower = new TableColumn<Alugado, String>("Horse Power");
     
-    ObservableList<Alugado> carrosAlugados = FXCollections.observableArrayList(
-            new Alugado("Volkswagen", "Gol", "Azul"),
-            new Alugado("Renault", "Kwid", "Roxo")
-    );
+    ObservableList<Alugado> carrosAlugados = FXCollections.observableArrayList();
     
     /**
      * Initializes the controller class.
@@ -60,34 +63,61 @@ public class FXMLController implements Initializable {
        cbCor.getItems().addAll(itemsCor);
        
        cbMarca.setOnAction(event -> {
-           String data = cbMarca.getSelectionModel().getSelectedItem();
+           cbMarcaData = cbMarca.getSelectionModel().getSelectedItem();
+           
      
        });
        
        cbModelo.setOnAction(event -> {
-           String data = cbModelo.getSelectionModel().getSelectedItem();
+           cbModeloData = cbModelo.getSelectionModel().getSelectedItem();
+           
+ 
+       });
+
+       cbCor.setOnAction(event -> {
+           cbCorData = cbCor.getSelectionModel().getSelectedItem();
  
        });
        
-       clnCor.setCellValueFactory(new PropertyValueFactory<Alugado, String>("Cor"));
-       clnModelo.setCellValueFactory(new PropertyValueFactory<Alugado, String>("Modelo"));
-       clnMarca.setCellValueFactory(new PropertyValueFactory<Alugado, String>("Marca"));
+       clnCor.setCellValueFactory(new PropertyValueFactory<Alugado, String>("cor"));
+       clnFuelC.setCellValueFactory(new PropertyValueFactory<Alugado, String>("FC"));
+       clnNome.setCellValueFactory(new PropertyValueFactory<Alugado, String>("nome"));
+       clnHorsePower.setCellValueFactory(new PropertyValueFactory<Alugado, String>("HP"));
        
-       clnModelo.setPrefWidth(107);
-       clnCor.setPrefWidth(107);
+       clnNome.setPrefWidth(50);
+       clnHorsePower.setPrefWidth(108);
+       clnFuelC.setPrefWidth(110);
+       clnCor.setPrefWidth(50);
        
-       carrosAlugados.add(new Alugado("Ford", "Fiesta", "Preto"));
        
-       tblTabela.getColumns().add(clnModelo);
+       tblTabela.getColumns().add(clnNome);
+       tblTabela.getColumns().add(clnHorsePower);
+       tblTabela.getColumns().add(clnFuelC);
        tblTabela.getColumns().add(clnCor);
        
-       tblTabela.setItems(carrosAlugados);
-       
+
     }
     
     @FXML
     void alugarAction(ActionEvent event) {
-        
+        Customer customerOne = new Customer(cbModeloData, cbMarcaData);
+        Factory factory = getCarFactory(customerOne);
+        Car carOne = factory.create(customerOne.getGradeRequest(), cbCorData);
+
+        carrosAlugados.add(new Alugado(carOne.getCarName(), carOne.getHorsePower(), carOne.getFuelCapacity(), carOne.getColor()));
+        carOne.getCarName();
+
+        tblTabela.setItems(carrosAlugados);
+    }
+
+    private static Factory getCarFactory(Customer customer) {
+        if(customer.getCompany() == "Renault") {
+            return new RenaultFactory();
+        }
+        if(customer.getCompany() == "VolksWagen") {
+            return new VolkswagenFactory();
+        }
+        return null;
     }
 
 }

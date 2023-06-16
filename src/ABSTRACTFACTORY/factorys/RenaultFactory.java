@@ -7,12 +7,12 @@ import ABSTRACTFACTORY.cars.Kwid;
 public class RenaultFactory extends Factory {
 
     @Override
-    Car retrieveCar(String CarType) {
-        if("SUV".equals(CarType)) {
-            return new Duster("Black");
+    Car retrieveCar(String carType, String color) {
+        if("SUV".equals(carType)) {
+            return new Duster(color);
         }
-        if("Common".equals(CarType)){
-            return new Kwid("Yellow");  
+        if("Common".equals(carType)){
+            return new Kwid(color);  
         }
         return null;
     }

@@ -27,6 +27,7 @@ public class Main extends Application {
         primaryStage.setTitle("Aluguel de Carros");
         primaryStage.setScene(scene);
         primaryStage.show();
+        primaryStage.setResizable(false);
     }
 
     /**

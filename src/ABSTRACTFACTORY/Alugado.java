@@ -5,25 +5,50 @@ package ABSTRACTFACTORY;
  * @author guirgo
  */
 public class Alugado {
-    private String marca;
-    private String modelo;
+    private String nome;
+
+    private String HP;
+
+    private String FC;
+    
     private String cor;
 
-    public Alugado(String marca, String modelo, String cor) {
-        this.marca = marca;
-        this.modelo = modelo;
+    public Alugado(String nome, String HP, String FC, String cor) {
+        this.nome = nome;
+        this.HP = HP;
+        this.FC = FC;
         this.cor = cor;
     }
 
-    public String getMarca() {
-        return marca;
+    public String getNome() {
+        return nome;
     }
 
-    public String getModelo() {
-        return modelo;
+    public String getHP() {
+        return HP;
+    }
+
+    public String getFC() {
+        return FC;
     }
 
     public String getCor() {
         return cor;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setHP(String HP) {
+        this.HP = HP;
+    }
+
+    public void setFC(String FC) {
+        this.HP = FC;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
     }
 }

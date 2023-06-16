@@ -4,18 +4,10 @@ import ABSTRACTFACTORY.cars.Car;
 
 public abstract class Factory {
     
-    public Car create(String carType) {
-        Car car = retrieveCar(carType);
-        car = prepareCar(car);
+    public Car create(String carType, String color) {
+        Car car = retrieveCar(carType, color);
         return car;
     }
 
-    private Car prepareCar(Car car) {
-        car.clean();
-        car.mechanicCheck();
-        car.fuelCar();
-        return car;
-    }
-
-    abstract Car retrieveCar(String CarType);
+    abstract Car retrieveCar(String carType, String color);
 }

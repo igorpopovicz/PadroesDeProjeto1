@@ -7,12 +7,12 @@ import ABSTRACTFACTORY.cars.TCross;
 public class VolkswagenFactory extends Factory {
 
     @Override
-    Car retrieveCar(String requestedGrade) {
-        if("SUV".equals(requestedGrade)) {
-            return new TCross("Purple");
+    Car retrieveCar(String carType, String color) {
+        if("SUV".equals(carType)) {
+            return new TCross(color);
         }
-        if("Common".equals(requestedGrade)){
-            return new Gol("White");
+        if("Common".equals(carType)){
+            return new Gol(color);
         }
         return null;
     }

@@ -4,29 +4,28 @@ public abstract class Car {
     private int horsePower;
     private int fuelCapacity;
     private String color;
+    private String name;
 
-    public Car(int horsePower, int fuelCapacity, String color) {
+    public Car(int horsePower, int fuelCapacity, String color, String name) {
         this.horsePower = horsePower;
         this.fuelCapacity = fuelCapacity;
         this.color = color;
+        this.name = name;
     }
 
-    public void startEngine() {
-        System.out.println("The " + this.getClass().getName() +
-                            "'s engine has been Started. He has " +
-                             this.horsePower + " horse power.");
+    public String getCarName() {
+       return this.name;
     }
 
-    public void clean() {
-        System.out.println("Car has been cleaned, and the " + this.color +
-                            " color shines \u2606\u2606");
+    public String getHorsePower() {
+        return "" + this.horsePower;
     }
 
-    public void mechanicCheck() {
-        System.out.println("Car has been checked the engine, Everything looks good!");
+    public String getFuelCapacity() {
+        return "" + this.fuelCapacity;
     }
 
-    public void fuelCar() {
-        System.out.println("Car is being filled with " + this.fuelCapacity + "L");
+    public String getColor() {
+        return this.color;
     }
 }
