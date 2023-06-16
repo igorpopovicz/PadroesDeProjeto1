@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -36,6 +37,8 @@ public class FXMLController implements Initializable {
     private ComboBox<String> cbCor;
     @FXML
     private TableView<Car> tblTabela;
+    @FXML
+    private MenuItem removerMenu;
 
     private TableColumn<Car, String> clnNome = new TableColumn<Car, String>("Nome");
     
@@ -89,7 +92,11 @@ public class FXMLController implements Initializable {
        tblTabela.getColumns().add(clnFuelC);
        tblTabela.getColumns().add(clnCor);
        
+    }
 
+    @FXML
+    void remover(ActionEvent event) {
+        carrosAlugados.remove(tblTabela.getSelectionModel().getSelectedItem());
     }
     
     @FXML
