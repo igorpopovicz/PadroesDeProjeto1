@@ -52,7 +52,7 @@ public class FXMLController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       String[] itemsMarca = {"Renault", "VolksWagen"};
+       String[] itemsMarca = {"Renault", "VolksWagen", "Chevrolet", "Nissan"};
        cbMarca.getItems().addAll(itemsMarca);
        
        String[] itemsModelo = {"SUV", "Common"};
@@ -109,6 +109,12 @@ public class FXMLController implements Initializable {
         }
         if(customer.getCompany() == "VolksWagen") {
             return new VolkswagenFactory();
+        }
+        if(customer.getCompany() == "Chevrolet") {
+            return new ChevroletFactory();
+        }
+        if(customer.getCompany() == "Nissan") {
+            return new NissanFactory();
         }
         return null;
     }
