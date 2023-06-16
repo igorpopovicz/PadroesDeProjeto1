@@ -1,7 +1,5 @@
 package ABSTRACTFACTORY;
 public class Customer {
-
-    private String nome;
     
     private String gradeRequest;
     private String company;

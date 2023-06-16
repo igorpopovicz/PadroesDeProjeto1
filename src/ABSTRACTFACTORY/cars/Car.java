@@ -1,10 +1,10 @@
 package ABSTRACTFACTORY.cars;
 
 public abstract class Car {
+    private String name;
+    private String color;
     private int horsePower;
     private int fuelCapacity;
-    private String color;
-    private String name;
 
     public Car(int horsePower, int fuelCapacity, String color, String name) {
         this.horsePower = horsePower;
@@ -13,7 +13,7 @@ public abstract class Car {
         this.name = name;
     }
 
-    public String getCarName() {
+    public String getName() {
        return this.name;
     }
 

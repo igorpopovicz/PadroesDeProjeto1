@@ -12,7 +12,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import ABSTRACTFACTORY.factorys.*;
 import ABSTRACTFACTORY.cars.Car;
 
@@ -36,17 +35,17 @@ public class FXMLController implements Initializable {
     @FXML
     private ComboBox<String> cbCor;
     @FXML
-    private TableView<Alugado> tblTabela;
+    private TableView<Car> tblTabela;
 
-        private TableColumn<Alugado, String> clnNome = new TableColumn<Alugado, String>("Nome");
+    private TableColumn<Car, String> clnNome = new TableColumn<Car, String>("Nome");
     
-    private TableColumn<Alugado, String> clnCor = new TableColumn<Alugado, String>("Cor");
+    private TableColumn<Car, String> clnCor = new TableColumn<Car, String>("Cor");
     
-    private TableColumn<Alugado, String> clnFuelC = new TableColumn<Alugado, String>("Fuel Capacity");
+    private TableColumn<Car, Integer> clnFuelC = new TableColumn<Car, Integer>("Fuel Capacity");
 
-    private TableColumn<Alugado, String> clnHorsePower = new TableColumn<Alugado, String>("Horse Power");
+    private TableColumn<Car, Integer> clnHorsePower = new TableColumn<Car, Integer>("Horse Power");
     
-    ObservableList<Alugado> carrosAlugados = FXCollections.observableArrayList();
+    ObservableList<Car> carrosAlugados = FXCollections.observableArrayList();
     
     /**
      * Initializes the controller class.
@@ -64,25 +63,20 @@ public class FXMLController implements Initializable {
        
        cbMarca.setOnAction(event -> {
            cbMarcaData = cbMarca.getSelectionModel().getSelectedItem();
-           
-     
        });
        
        cbModelo.setOnAction(event -> {
            cbModeloData = cbModelo.getSelectionModel().getSelectedItem();
-           
- 
        });
 
        cbCor.setOnAction(event -> {
            cbCorData = cbCor.getSelectionModel().getSelectedItem();
- 
        });
        
-       clnCor.setCellValueFactory(new PropertyValueFactory<Alugado, String>("cor"));
-       clnFuelC.setCellValueFactory(new PropertyValueFactory<Alugado, String>("FC"));
-       clnNome.setCellValueFactory(new PropertyValueFactory<Alugado, String>("nome"));
-       clnHorsePower.setCellValueFactory(new PropertyValueFactory<Alugado, String>("HP"));
+       clnCor.setCellValueFactory(new PropertyValueFactory<Car, String>("color"));
+       clnFuelC.setCellValueFactory(new PropertyValueFactory<Car, Integer>("fuelCapacity"));
+       clnNome.setCellValueFactory(new PropertyValueFactory<Car, String>("name"));
+       clnHorsePower.setCellValueFactory(new PropertyValueFactory<Car, Integer>("horsePower"));
        
        clnNome.setPrefWidth(50);
        clnHorsePower.setPrefWidth(105);
@@ -104,8 +98,7 @@ public class FXMLController implements Initializable {
         Factory factory = getCarFactory(customerOne);
         Car carOne = factory.create(customerOne.getGradeRequest(), cbCorData);
 
-        carrosAlugados.add(new Alugado(carOne.getCarName(), carOne.getHorsePower(), carOne.getFuelCapacity(), carOne.getColor()));
-        carOne.getCarName();
+        carrosAlugados.add(carOne);
 
         tblTabela.setItems(carrosAlugados);
     }
